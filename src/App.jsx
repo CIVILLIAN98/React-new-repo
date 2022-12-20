@@ -1,8 +1,29 @@
 import react from "react";
 import "./App.css";
-import { useState } from "react";
+
+const data = [
+  { id: 1, name: "something here" },
+  { id: 2, name: "something here" },
+  { id: 3, name: "something here" },
+  { id: 4, name: "something here" },
+  { id: 1, name: "something here" },
+  { id: 2, name: "something here" },
+  { id: 3, name: "something here" },
+  { id: 4, name: "something here" },
+  { id: 4, name: "something here" },
+  { id: 1, name: "something here" },
+  { id: 2, name: "something here" },
+  { id: 3, name: "something here" },
+];
 
 class App extends react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      task: data,
+    };
+  }
+
   render() {
     return (
       <>
@@ -13,30 +34,16 @@ class App extends react.Component {
           </div>
           <hr />
           <div className="body">
-            <div className="item">
-              <p>
-                <input type="checkbox" /> {this.props.smtn}
-              </p>
-              <button> Delete</button>
-            </div>
-            <div className="item">
-              <p>
-                <input type="checkbox" /> {this.props.css}
-              </p>
-              <button> Delete</button>
-            </div>
-            <div className="item">
-              <p>
-                <input type="checkbox" /> {this.props.html}
-              </p>
-              <button> Delete</button>
-            </div>
-            <div className="item">
-              <p>
-                <input type="checkbox" /> {this.props.vue}
-              </p>
-              <button> Delete</button>
-            </div>
+            {this.state.task.map((value) => {
+              return (
+                <div className="item">
+                  <p>
+                    <input type="checkbox" /> {value.name}
+                  </p>
+                  <button> Delete</button>
+                </div>
+              );
+            })}
           </div>
           <div className="footer">
             <input className="inp" type="text" placeholder="Add Todo..." />{" "}
